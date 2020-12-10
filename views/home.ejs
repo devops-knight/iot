@@ -1,0 +1,44 @@
+<section id="home" class="position-relative">
+<div id="section_layout" class="d-flex position-relative w-100">
+    <div id="section_content">
+        <h3>Home Automation</h3>
+        <span>
+        An automated production line is comprised of a series of workstations linked by a transfer system and an electrical control system.
+        </span>
+        <div class="doc_links">
+            <% for (i in DocLinks) { %>
+              <% property = DocLinks[i] %>
+            <a href="<%= property.hyper_link %>" target="_blank">
+              <i class="<%= property.font_awesome %>" aria-hidden="true"></i>
+              <%= i %>
+            </a>
+            <% } %>
+        </div>
+    </div>
+    <div id="goto" class="d-flex justify-content-start">
+        <% if (user == 1) { %>
+        Not Have Any Access?
+        <div>
+          <a href="user_credential">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Sign Up
+          </a>
+        </div>
+        <% } else { %>
+        Go To Your
+        <div>
+          <a href="dashboard">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Dashboard
+          </a>
+        </div>
+        <% } %>
+      </div>
+</div>
+</section>
