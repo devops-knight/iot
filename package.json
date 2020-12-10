@@ -1,0 +1,19 @@
+{
+  "name": "iot",
+  "version": "1.0.0",
+  "description": "Home Automation With iot",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "iot",
+    "home_automation"
+  ],
+  "author": "knight",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
