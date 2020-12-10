@@ -1,0 +1,98 @@
+<section id="contact">
+<div id="contact_layout" class="d-flex position-relative w-100">
+<div id="contact_head" class="d-flex">
+    <div id="contact_head_top">
+      Contact Us
+    </div>
+    <div id="contact_head_bottom" class="d-flex">
+      <span id="line" class="position-relative d-flex align-items-center justify-content-end"></span>Have a project ?
+    </div>
+  </div>
+
+  <div id="contact_body" class="d-flex w-100">
+      <div id="body_left">
+          <div>What can we do for you?</div>
+          <div id="body_left_form">
+            <form action="/contact/contact-request" class="w-100" method="POST">
+              <div class="opt d-flex w-100">
+                <% for (i in formOption) { %>
+                  <div class="d-flex top-form pr-10">
+                    <label for="<%= i %>" id="st"><%= i %></label>
+                    <input class="d-flex checkbox" type="checkbox" id="<%= i %>" name="category" value="<%= i %>" autocomplete="off"/>
+                  </div>
+                <% } %>
+                </div>
+
+                <div class = "info d-flex pt-10 w-100">
+                  <div class="d-flex pt-10 position-relative w-100">
+                      <div class="w-100 pr-10 position-relative"><label for="name">Your Name</label>
+                        <input type="text" class="w-100" id="name" name="name" autocomplete="off" required/></div>
+                      <div class="w-100 pr-10 position-relative"><label for="email">Your Email</label>
+                        <input type="email" class="w-100" id="email" name="email" autocomplete="off" required/></div>                    
+                  </div>
+                  <div class="d-flex pr-10 pt-10 position-relative">
+                    <div class="w-100 pr-10 position-relative"><label for="project">Your Project</label>
+                      <input type="text" id="project" class="w-100" name="project_detail" autocomplete="off" required/></div>
+                  </div>
+                </div>
+                <div class="sub-butt">
+                  <input type="submit" value="Send Request" />
+                </div>
+            </form>
+          </div>
+        </div>
+        <div id="body_right">
+          <div id="body_right_text"><%= contactText %></div>
+          <div> 
+            <ul class="social_links d-flex">
+              <% for (i in socialLinks) { %>
+                <% property = (socialLinks[i]) %>
+              <li><a class="d-flex" href="<%= property.hyper_link %>" target="_blank"><i style="<%= property.style %>" class="<%= property.class %>"></i></a></li>
+              <% } %>
+            </ul>
+          </div>
+          <div style="color:#48562f; padding-top: 30px ;font-size: 1.2rem"><span style="color: #fff">Mobile No :-</span> <span style="text-decoration: underline">89500XXXXX</span></div>
+        </div>
+      </div>
+  </div>
+</div>
+</section>
+
+<script>
+  $(document).ready(function(){
+
+    $(".info input").on("focus",function(){
+      var label = $("label[for='" + $(this).attr('id') + "']");
+        $(label).css({
+        "top":"-12px",
+        "left":"0",
+        "color":"green"
+      });
+    });
+    
+    $(".info input").on("blur",function(){
+      var label = $("label[for='" + $(this).attr('id') + "']");
+      if($(this).val() == "")
+      {
+        $(label).css({
+        "top":"12px",
+        "color": "white"
+      });
+      }
+    });
+
+    $("input[type=checkbox]").on('click',function(){
+      var lable = $("label[for='" + $(this).attr('id') + "']");
+      if($(this).is(':checked')){
+        $(lable).css({
+        "background" : "#48562f"
+      })
+      }
+      else{
+        $(lable).css({
+        "background" : "transparent"
+      })
+      }
+    });
+  });
+</script>

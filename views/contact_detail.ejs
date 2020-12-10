@@ -1,0 +1,35 @@
+<section id="contact_detail">
+    <div id="contact_info" class="d-flex position-relative w-100 disp">
+        <h1>Contacts Details</h1>
+            <hr>
+            <div class="table-wrapper">
+                <table class="table w-100">
+                    <thead>
+                        <tr>
+                            <th>S. No.</th>
+                            <th>Category</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Project Details</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <% for (let i of contact_list) { %>
+                        <tbody>
+                            <tr>
+                                <td><%=  1 %></td>
+                                <td><%= i.category %></td>
+                                <td><%= i.name %></td>
+                                <td><%= i.email %></td>
+                                <td><%= i.project_detail %></td>
+                                <td><a class="button float-right" href="">Edit</a></td>
+                                <td><a class="button-danger" href="/delete_request/?id=<%= i._id %>">Delete</a></td>
+                            </tr>
+                        </tbody>
+                    <% } %>
+                </table>
+            </div>
+    </div>
+</section>

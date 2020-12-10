@@ -1,0 +1,35 @@
+<section id="dashboard-bg" class="">
+    <div id="dashboard-fg" class="d-flex position-relative w-100">
+        <div class="d-flex w-100">
+            <div class="d-flex w-100 flex-direction-column align-self-center">
+                <div class="d-flex w-100">
+                    <h1> Dashboard <small>welcome {{session.username}}</small></h1>
+                </div>
+                <div class="d-flex w-100">
+                    <a href="/user_profile" class="edit_p"><i class="fas fa-user-edit"></i>Edit Profile</a>
+                </div>
+            </div>
+            <img src="/images/man.jpg" width="100" height="101" class=" d-flex align-items-end align-items-flex-end justify-content-end">
+        </div>
+        <hr>
+        <div class="d-flex w-100 flex-direction-column conn_detail">
+            <div class="d-flex w-100">
+                <span class="typ_room"></span>
+                    <span class="d-flex">Lobby</span>
+                    <span class="typ_a_room"></span>
+            </div>
+        </div>
+        <hr>
+    </div>
+</section>
+
+
+
+<script>
+    $(document).ready(function(){
+        $(".navbar").css({
+        "background" : "#000",
+        "transition": "0.5s"
+      })
+    });
+</script>
