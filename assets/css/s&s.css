@@ -109,6 +109,7 @@ header
   background: transparent;
   z-index: 10000;
   transition: 0.5s;
+  top: 0;
 }
 
 .navbar
@@ -225,7 +226,7 @@ span {
 	font-size: 12px;
 }
 
-a {
+.container a {
 	color: #333;
 	font-size: 14px;
 	text-decoration: none;
@@ -291,6 +292,8 @@ input {
 	width: 768px;
 	max-width: 100%;
 	min-height: 480px;
+	padding: 20px 40px 20px 40px;
+	top: 50px;
 }
 
 .form-container {

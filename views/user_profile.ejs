@@ -6,9 +6,9 @@
         </div>
         <div class="d-flex position-relative w-100 flex-direction-row">
             <div id="p_profile" class="d-flex justify-content-center flex-direction-column">
-                <div class="d-flex justify-content-center w-100"><img src="/images/man.jpg" width="100" height="101"></div>
-                <h3 class="d-flex justify-content-center">admin</h3>
-                <h5 class="d-flex justify-content-center prof_padd">admin@admin.com</h5>
+                <div class="d-flex justify-content-center w-100"><img src="<%- user.avatar %>" alt="<%= user.name %>" width="100" height="101"></div>
+                <h3 class="d-flex justify-content-center"><%= user.name %></h3>
+                <h5 class="d-flex justify-content-center prof_padd"><%= user.email %></h5>
                 <a class="d-flex justify-content-center"><i class="far fa-edit"></i>Edit Photo</a>
                 <hr>
                 <h4 class="prof_padd">
@@ -16,12 +16,12 @@
                 </h4>
                 <hr>
                 <h4 class="prof_padd">Description</h4>
-                <p>A paragraph is a series of related sentences developing a central idea, called the topic. Try to think about paragraphs in terms of thematic unity: </p>
+                <p><%= user.description %></p>
             </div>
             <div id="d_profile" class="d-flex flex-direction-column w-100">
                 <h4>Account ID: 1</h4>
                 <hr>
-                <form action="" method="POST">
+                <form action="/user/profile-update/<%= user.id %>" enctype="multipart/form-data" method="POST">
                     <div id="mail&id" class="d-flex">
                         <div class="d-flex w-100 flex-direction-column d_form_padd">
                             <label>Email</label>
@@ -29,28 +29,32 @@
                         </div>
                         <div class="d-flex w-100 flex-direction-column d_form_padd">
                             <label>Username</label>
-                        <input type="text" placeholder="" id="uname" value="<%=  %>" name="uname" autocomplete="off" required>
+                        <input type="text" placeholder="" id="uname" value="<%= user.name %>" name="uname" autocomplete="off" required>
                         </div>
                     </div>
                     <div id="mail&id" class="d-flex">
-                        <div class="d-flex w-100 flex-direction-column d_form_padd">
+                        <!-- <div class="d-flex w-100 flex-direction-column d_form_padd">
                             <label>First Name</label>
-                        <input type="text" placeholder="" id="fname" value="<%= user.name %>" name="fname" autocomplete="off" required>
+                        <input type="text" placeholder="" id="fname" value="<%= user.fname %>" name="fname" autocomplete="off" required>
                         </div>
                         <div class="d-flex w-100 flex-direction-column d_form_padd">
                             <label>Last Name</label>
-                        <input type="text" placeholder="" id="lname" value="<%=  %>" name="lname" autocomplete="off" required>
+                        <input type="text" placeholder="" id="lname" value="<%= user.lname %>" name="lname" autocomplete="off" required>
+                        </div> -->
+                        <div class="d-flex w-100 flex-direction-column d_form_padd">
+                            <label>Profile Picture</label>
+                        <input type="file" placeholder="" id="avatar" name="avatar" autocomplete="off" required>
                         </div>
                     </div>
                     <div id="mail&id" class="d-flex">
                         <div class="d-flex w-100 flex-direction-column d_form_padd">
                             <label>Address</label>
-                        <input type="text" placeholder="" id="addrss" value="<%=  %>" name="addrss" autocomplete="off" required>
+                            <input type="text" placeholder="" id="adrs" value="<%= user.adrs %>" name="adrs" autocomplete="off" required>
                         </div>
                     </div>
                     <div id="describ" class="d-flex flex-direction-column d_form_padd">
                         <label>Description</label>
-                        <textarea name="" id="" cols="25" rows="2" class="w-100" maxlength="150"></textarea>
+                        <textarea name="description" id="" cols="25" rows="2" class="w-100" maxlength="150"></textarea>
                     </div>
                     <div class="d_form_padd">
                         <button class="upd_butt">Update Profile</button>

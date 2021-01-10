@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/iot',{useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true,});
+mongoose.connect('mongodb://localhost/iot',{useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true,useFindAndModify: false});
 
 const db = mongoose.connection;
 

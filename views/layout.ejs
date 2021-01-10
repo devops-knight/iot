@@ -4,6 +4,8 @@
         <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://kit.fontawesome.com/67462c1432.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css" integrity="sha512-0p3K0H3S6Q4bEWZ/WmC94Tgit2ular2/n0ESdfEX8l172YyQj8re1Wu9s/HT9T/T2osUw5Gx/6pAZNk3UKbESw==" crossorigin="anonymous" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js" integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q==" crossorigin="anonymous"></script>
 
         <% if(title == 'SignUp & SignIn') {%>
             <%- style %>
@@ -13,11 +15,33 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
-        <!-- <header class="navbar d-flex position-fixed w-100"> -->
-            <!-- <%- include ('_header') %> -->
-        <!-- </header> -->
+        <% if(title != 'SignUp & SignIn') { %>
+        <header class="navbar d-flex position-fixed w-100">
+            <%- include ('_header') %>
+        </header>
+        <% } else { %>
+            <header class="navbar d-flex w-100 position-absolute">
+                <%- include ('_header') %>
+            </header>
+            <% } %>
+
+            <h1><%= flash.success %></h1>
+        
         <%- body %>
 
         <%- script %>
+
+        <script>
+            <% if(flash.success && flash.success.length > 0) { %>
+                new Noty({
+                    theme: 'relax',
+                    text: '<%= flash.success %>',
+                    type: 'success',
+                    layout: 'topRight',
+                    timeout: 1500
+                }).show();
+            <% } %>
+        </script>
     </body>
+
 </html>

@@ -172,7 +172,7 @@ header
     margin: 15px;
   }
 
-  li a{
+  #nav_links li a{
     border-radius: 1000px;
     text-transform: uppercase;
     font-size: 1.1em;
@@ -775,6 +775,8 @@ input:focus{
 
 #body_right ul li {
   list-style: none;
+  padding: 10px 10px 10px 0;
+
 }
 
 #body_right ul li a{
@@ -955,7 +957,7 @@ table .button-danger{
   padding: 10px;
 }
 
-.fa-check-circle
+.fa-check-circle, .fa-times-circle
 {
   font-size: 7rem;
 }
@@ -1046,7 +1048,7 @@ sp {
 
 #dashboard-bg{
   min-height: 100vh;
-  background: #fff;
+  background: #f2f2f2;
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
@@ -1099,50 +1101,292 @@ font-weight: 400;
   text-decoration: none;
 }
 
-.typ_room{
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 20%;
-  cursor: default;
+#widget{
+  background: #e7e7e7;
+  height: 100%;
+  padding: 40px;
 }
 
-.typ_room::before
-{
-  position: absolute;
-  content: '';
-  width: 100%;
-  height: 1px;
+#widget h1{
+  padding-top: 10px;
+  font-weight: 100;
+}
+
+.cpu_svg{
+
+  display: block;
+  text-indent: -99999px;
+  width: 100px;
+  height: 100px;
+  background: url(/images/cpu.svg);
+  background-size: 100px 100px;
+  margin-bottom: 10px;
+}
+
+#widget button{
   background-color: #000;
-}
-.typ_a_room{
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  cursor: default;
+  border: 1px solid #000;
+  color: #fff;
+  margin: 30px 20px;
+  padding: 10px;
+  border-top-left-radius: 5%;
+  border-top-right-radius: 5%;
+  border-bottom-left-radius: 5%;
+  border-bottom-right-radius: 5%;
+  transition: .5s ease-in-out;
 }
 
-.typ_a_room::before
-{
+#widget button:hover{
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
+
+.sec{
+  position: fixed;
+  width: 100%;
+  background-size: cover;
+  transition: 0.6s;
+  z-index: 10000;
+  top: 0;
+}
+
+.sec.active {
+  border-top: none;
+  transform: translateX(-505px);
+}
+
+.list-reset {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+#navigation{
   position: absolute;
-  content: '';
+  top: 0;
+  right: 0;
+  width: 450px;
+  height: 100vh;
+  background-color: #fff;
+  font-size: 1.2em;
+  font-weight: 100;
+  z-index: 10000;
+  transform: translateX(100%);
+}
+
+#navigation input{
+  padding: 10px;
+  border: 1px solid gray;
+  width: 55%;
+}
+
+#navigation label{
+  color: gray;
+}
+
+#slide_b ol li{
+  list-style: none;
+}
+
+.top_nav{
+  background: #08afd5;
+  padding: 28px;
+  font-size: 2rem;
+  color: #fff;
+  place-items: center;
+}
+
+#widget .table-wrapper{
+  overflow-y: scroll;
+  height: 450px;
+}
+
+#widget .table-wrapper th{
+    position: sticky;
+    top: 0;
+    /* border: 10px solid #fff; */
+}
+
+#widget .table{
+  color: #000;
+  margin-bottom: 1rem;
+  border-collapse: collapse;
+  overflow: scroll;
+  border-collapse: collapse;
   width: 100%;
-  height: 1px;
-  background-color: #000;
 }
 
-.conn_detail{
-  padding: 0 30px;
+#widget .table th{
+  color: green;
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid #dee2e6;
+  background-color: transparent;
+  font-size: 1.2rem;
+  font-weight: 400;
+  padding-bottom: 10px;
 }
 
+#widget .table td{
+  max-width: 40px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 1px solid #dee2e6;
+}
+
+#widget .dev_logo{
+  display: block;
+  text-indent: -99999px;
+  width: 30px;
+  height: 30px;
+  background: url(/images/cpu.svg);
+  background-size: 30px 30px;
+  margin: 0px;
+}
+
+#relays{
+  width:250px;
+  height: 250px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.relay_bg{
+  /* background:linear-gradient(135deg, gray 50%, rgb(70, 65, 65) 50%); */
+  background: linear-gradient(45deg, gray 50%, #000 50%);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  cursor: pointer;
+  text-decoration: none;
+}
 
 /*-------------------------------------------------------------------------------------*/
 
+#tools-bg{
+  min-height: 100vh;
+  background: linear-gradient( #fff, #000);
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  width: 100%;
+  color: #212529;
+  text-align: left;
+  /* padding-right: 15px;
+  padding-left: 15px; */
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#tools-fg{
+  flex-direction: column;
+  /* padding: 20px 40px 20px 40px; */
+  height: 100%;
+  overflow: hidden;
+  /* top: 96px; */
+}
+
+.upper_sec_tool{
+  background: url('/images/computer.jpeg');
+  min-height: 400px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  overflow: hidden;
+}
+
+#tools-fg .upper_content{
+  height: 100%;
+  padding: 100px 0 0;
+  color: #fff;
+}
+
+.down_sec_tool{
+  height: 100%;
+  margin: 10px 40px;
+  padding: 0 70px;
+  background-color: #fff;
+}
+
+.arduino_image{
+  background: url('https://a.pololu-files.com/picture/0J7808.1200.jpg?8a7bee07ca7ffbb11e11f74e99f5c3a9');
+background-repeat: no-repeat;
+background-size: 60% 100%;
+overflow: hidden;
+height: 100px;
+background-position: 50px;
+}
+.relay_image{
+  background: url('https://aws.robu.in/wp-content/uploads/2016/02/1-Channel-5V-10A-Relay-Module-3.jpg');
+  background-repeat: no-repeat;
+  background-size: 75% 200%;
+  overflow: hidden;
+  height: 100px;
+  background-position: 50px;
+}
+
+.esp_image{
+  background: url('https://images-na.ssl-images-amazon.com/images/I/611SuZX5oYL._SL1000_.jpg');
+  background-repeat: no-repeat;
+  background-size: 60% 110%;
+  overflow: hidden;
+  height: 100px;
+  background-position: 50px;
+}
+
+.node_image{
+  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png');
+  background-repeat: no-repeat;
+  background-size: 60% 110%;
+  overflow: hidden;
+  height: 100px;
+  background-position: 50px;
+}
+
+.mongoo_image{ 
+  background: url('https://miro.medium.com/max/3196/1*4E0JF4BkB4lkJrf8G30qlg.png');
+  background-repeat: no-repeat;
+  background-size: 60% 110%;
+  overflow: hidden;
+  height: 100px;
+  background-position: 50px;
+}
+
+
+#tool .tool_btn_buy{
+  background-color: rgb(51, 102, 179);
+  color: #fff;
+  border-color: rgb(51, 102, 179);
+  padding: .379rem .75rem;
+  border-style: none;
+  font-weight: 400;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  float: right;
+}
+
+#tool .tool_btn_know{
+  background-color: #dc3545;
+  color: #fff;
+  border-color: #dc3545;
+  padding: .379rem .75rem;
+  border-style: none;
+  font-weight: 400;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  float: left;
+}
+
+/*-------------------------------------------------------------------------------------*/
 
 #usr_profile{
   min-height: 100vh;
-  background: rgb(209, 201, 201);
+  background: #f2f2f2;
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;

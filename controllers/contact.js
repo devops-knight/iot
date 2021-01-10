@@ -1,3 +1,5 @@
+const Contact_detail = require('../models/contact_detail');
+
 var form_option = {'Design': 'Design', 'Development': 'Development', 'Deployment': 'Deployment', 'Others': 'Others'};
 contact_text = "Tell us about your vision: which challenges are you facing? What are your goals and expectation? What would success look and how much are you planning to spend to get there?";
 var social_links = {Facebook:{hyper_link: 'https://www.facebook.com/', class:'fab fa-facebook-f', style : 'color: #3d5b99'},
@@ -6,7 +8,7 @@ var social_links = {Facebook:{hyper_link: 'https://www.facebook.com/', class:'fa
                     Linkedin:{hyper_link: 'https://www.linkedin.com/', class:'fab fa-linkedin-in', style: 'color: #2867b2'}
 }
 
-var nav_array = {'Home': '/' , 'Blog': 'blog' , 'tools': 'tools' , 'Why Choose Us!': 'why' , 'Contact Us': 'contact'};
+var nav_array = {'Home': '/' , 'Blog': '/blog' , 'tools': '/tools' , 'Why Choose Us!': '/why' , 'Contact Us': '/contact'};
 
 
 module.exports.contact = function(req,res){
@@ -28,10 +30,20 @@ module.exports.contact_request = function(req, res,err){
         return;
         }
         console.log('********',newCD);
-        return  res.redirect('Thankyou');
+        return  res.redirect('/contact/Thankyou');
     });
     }
     catch(err){
         return console.log(err);
     }
 };
+
+module.exports.contact_detail = function(req, res){
+    Contact_detail.find({},function(err, cont){
+        return res.render('contact_detail',{title : 'Contact Detail', navLinks : nav_array, contact_list : cont});
+    })
+}
+
+module.exports.Thankyou = function(req, res){
+    return res.render('Thankyou',{title : 'ThankYou',navLinks : nav_array});
+}

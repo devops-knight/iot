@@ -1,0 +1,132 @@
+<section id="dashboard-bg" class="">
+    <div id="dashboard-fg" class="d-flex position-relative w-100">
+        <div class="d-flex w-100">
+            <div class="d-flex w-100 flex-direction-column align-self-center">
+                <div class="d-flex w-100">
+                    <h1> Dashboard <small>welcome <%= user.name %></small></h1>
+                </div>
+                <div class="d-flex w-100">
+                    <a href="/user/profile" class="edit_p" style="margin: 5px;"><i class="fas fa-user-edit"></i>Edit Profile</a>
+                    <a href="/user/end-session" class="edit_p" style="background-color: red; margin: 5px;"><i class="fas fa-user-edit"></i>Sign Out </a>
+                </div>
+            </div>
+            <img src="<%= user.avatar %>" width="100" height="101" class=" d-flex align-items-end align-items-flex-end justify-content-end">
+        </div>
+        <hr>
+        <% if(device != '') {%>
+        <div id="widget" style="padding: 0px;" class="d-flex w-100 widget flex-direction-column">
+            <div class="d-flex flex-direction-row">
+                <%for (i of device) { %>
+                <div id="relays" class="d-flex flex-direction-column" style="margin: 10px;">
+                    <div class="d-flex w-100" style="padding: 5px 10px 20px 10px;">
+                        <div class="d-flex w-100"><%= i.name %></div>
+                        <div class="d-flex w-100 justify-content-end align-items-center"><td style="text-align: center;"><a href="/user/delete-relay/<%= i.id %>"><i style="color: rgb(138, 138, 138);" class="fas fa-trash-alt"></i></a></td></div>
+                    </div>
+                    <div class="d-flex w-100 flex-direction-column justify-content-center" style="color: rgb(119, 115, 115)">
+                        <div class="d-flex w-100 justify-content-center" style="padding: 0px 10px 5px;">Relay</div>
+                        <div class="d-flex w-100 justify-content-center" style="padding: 0 10px 5px;"><%= dev.name %></div>
+                        <span class="d-flex w-100 justify-content-center"><a href="/user/update-relay/<%= i.id %>" onclick="calling_t(this.id)" class="relay_bg d-flex align-items-center justify-content-center" id="<%= i.id %>" name="<%= i.status %>" iap="<%= dev.ip %>" ><i class="fas fa-power-off" style="font-size: 3rem; color: #fff;"></i></a></span>
+                        <span class="d-flex w-100 justify-content-center" style="padding: 10px;"><% if(i.status == false) { %>
+                            <%= i.off_message %>
+                            <% } else { %>
+                            <%= i.on_message %>
+                            <% } %>
+                        </span>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+            <hr>
+            <div style="text-align: center; padding: 30px; font-size: 1.7rem;"><a style="color: #08afd5; cursor: pointer;" onclick="opennav()"><i style="padding-right: 10px;" class="fas fa-plus-circle"></i>Add More Device</a></div>
+        </div>
+        <% } else { %>
+        <div id="widget" class="d-flex w-100 widget flex-direction-column align-items-center justify-content-center">
+            <div class="cpu_svg"></div>
+            <h1>There are no Relay created</h1>
+            <span style="padding-top: 20px;">Click the button below to start sending dots to your first Device and begin to unlock the value of your data</span>
+            <button type="submit" onclick="opennav()">Create Relay</button>
+        </div>
+        <% } %>
+        <div class="sec" id="slide_b">
+            <form action="/user/create-relay/<%=id%>" id="new-relay" method="POST">
+                <ol class="d-flex w-100 flex-direction-column list-reset" id="navigation" style="overflow: auto;">
+                    <li class="d-flex w-100 justify-content-center top_nav">
+                        <span>Adding Relay</span>
+                    </li>
+                    <li class="d-flex w-100" style="padding: 30px;">
+                        <span style="color: #08afd5; cursor: pointer;" onclick="closenav()"><i class="fas fa-hand-point-left" style="padding-right: 10px;"></i>Back</span>
+                    </li>
+                    <li class="">
+                        <span class="d-flex w-100" style="background-color:rgba(181, 177, 177, 0.946);">Appearance</span>
+                        <div class="d-flex justify-content-center" style="padding: 30px 10px 10px;">
+                            <label class="d-flex w-100 align-items-center" for="name">Name</label>
+                            <input type="text" id="name" class="d-flex w-100" name="name" autocomplete="off" required/>
+                        </div>
+                    </li>
+                    
+                    <li class="">
+                        <span class="d-flex w-100" style="background-color:rgba(181, 177, 177, 0.946);">Configration</span>
+                        <div class="d-flex justify-content-center" style="padding: 30px 10px 10px;">
+                            <label class="d-flex w-100 align-items-center" for="min_val">Minimum Value</label>
+                            <input type="number" id="min_val" class="d-flex w-100" value="0" name="min_val" autocomplete="off" required/>
+                        </div>
+                        <div class="d-flex justify-content-center" style="padding: 10 10px ;">
+                            <label class="d-flex w-100 align-items-center" for="max_val">Maximum Value</label>
+                            <input type="number" id="max_val" class="d-flex w-100" value="1" name="max_val" autocomplete="off" required/>
+                        </div>
+                        <div class="d-flex justify-content-center" style="padding: 10px 10px ;">
+                            <label class="d-flex w-100 align-items-center" for="on_message">On Meassage</label>
+                            <input type="text" id="on_message" class="d-flex w-100" value="On" name="on_message" autocomplete="off" required/>
+                        </div>
+                        <div class="d-flex justify-content-center" style="padding: 10px 10px 30px;">
+                            <label class="d-flex w-100 align-items-center" for="off_message">Off Message</label>
+                            <input type="text" id="off_message" class="d-flex w-100" value="Off" name="off_message" autocomplete="off" required/>
+                        </div>
+                    </li>
+    
+                    <li class="d-flex w-100 justify-content-end" style="padding: 0 30px ;">
+                        <button style="border: transparent; background: transparent;" type="submit"><i class="fas fa-check-circle" style="color: rgb(46, 170, 46); font-size: 3rem;"></i></button>
+                    </li>
+    
+                  </ol>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+
+<script>
+    $(document).ready(function(){
+        $(".navbar").css({
+        "background" : "#000",
+        "transition": "0.5s"
+      })
+    });
+
+    function opennav(){
+        document.getElementById('slide_b').style.transform = "translateX(-505px)";
+    }
+
+    function closenav(){
+        document.getElementById('slide_b').style.transform = "translateX(505px)";
+    }
+
+    function calling_t(clicked_id){
+        console.log(clicked_id);
+        var val = document.getElementById(clicked_id).getAttribute("name");
+        var ip = document.getElementById(clicked_id).getAttribute("iap");
+        console.log('http://'+ip+'/led1on');
+        if(val == 'false'){
+            window.open('http://'+ip+'/led1on');
+            
+            document.getElementById(clicked_id).style.background = "linear-gradient(45deg, rgb(53, 199, 148) 50%, rgb(72, 137, 223) 50%)";
+        }
+        else if(val == 'true'){
+            window.open('http://'+ip+'/led1off');
+            
+            document.getElementById(clicked_id).style.background = "linear-gradient(45deg, gray 50%, #000 50%)";
+        }
+    }
+
+</script>

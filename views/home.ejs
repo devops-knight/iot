@@ -16,7 +16,7 @@
         </div>
     </div>
     <div id="goto" class="d-flex justify-content-start">
-        <% if (user == 1) { %>
+        <% if (!locals.user) { %>
         Not Have Any Access?
         <div>
           <a href="/user/signup">
@@ -30,7 +30,7 @@
         <% } else { %>
         Go To Your
         <div>
-          <a href="dashboard">
+          <a href="/user/dashboard">
             <span></span>
             <span></span>
             <span></span>
